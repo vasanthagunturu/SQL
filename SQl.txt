@@ -37,20 +37,14 @@ EXEC SelectAllCustomers City = "London", PostalCode = "WA1 1DP";
 CREATE DATABASE testDB;  (to create new Database -Make sure you have admin privilege before creating any database.)
 SHOW DATABASES;          (Once a database is created, you can check it in the list of databases with this command)
 DROP DATABASE testDB;    (to drop a Db)
-BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak';   (to back up and save a DB, give file path where it has to be stored, store in a diff. drive than 
-original DB)
+BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak';   (to back up and save a DB, give file path where it has to be stored, store in a diff. drive than original DB)
 BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak' with DIFFERENTIAL  (only backs up the parts of the database that have changed since the last full 
 database backup, saves time)
-CREATE TABLE Persons (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
+CREATE TABLE Persons ( PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255),
     City varchar(255) );         (to create a new table in the DB, with these columns and data types) 
 	
 CREATE TABLE TestTable AS
-SELECT customername, contactname
-FROM customers;                  (to create a new table with certain columns from existing table- will take all the values of those columns)
+SELECT customername, contactname FROM customers;   (to create a new table with certain columns from existing table- will take all the values of those columns)
 
 DROP TABLE Shippers;    (to drop or delete a table from DB - Deleting a table will result in loss of complete information stored in the table)
 TRUNCATE TABLE table_name;  (completely delete table and all its data)
@@ -59,23 +53,20 @@ ALTER TABLE Customers DROP COLUMN Email;(alter table- drop column)
 ALTER TABLE Persons ADD DateOfBirth date; 
 ALTER TABLE Persons ALTER COLUMN DateOfBirth year; 
 
-CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,                (Check constraint, constraints are given when creating and altering the table)
+CREATE TABLE Persons ( ID int NOT NULL,
+    LastName varchar(255) NOT NULL,         (Check constraint, constraints are given when creating and altering the table)
     FirstName varchar(255),
     Age int,
     CHECK (Age>=18) )
 CREATE TABLE Orders (
     ID int NOT NULL,
     OrderNumber int NOT NULL,
-    OrderDate date DEFAULT GETDATE()               (default constraint)
-ALTER TABLE Persons
-ALTER City SET DEFAULT 'Houston';
+    OrderDate date DEFAULT GETDATE()           (default constraint)
+ALTER TABLE Persons ALTER City SET DEFAULT 'Houston';
 
 CREATE INDEX idx_pname
 ON Persons (LastName, FirstName);              (to create index on 2 columns in a table)
-ALTER TABLE Persons
-DROP INDEX idx_pname;                          (to drop an index)
+ALTER TABLE Persons DROP INDEX idx_pname;      (to drop an index)
 
 CREATE TABLE Persons (
     Personid int NOT NULL AUTO_INCREMENT,
@@ -85,10 +76,8 @@ CREATE TABLE Persons (
     PRIMARY KEY (Personid) )                 (Auto increment)
 
 Personid int IDENTITY(1,1) PRIMARY KEY,
-
 CREATE VIEW [Brazil Customers] AS
 SELECT CustomerName, ContactName
 FROM Customers
 WHERE Country = "Brazil";                    (creating View)
-
 SELECT * FROM [Brazil Customers];     (we can see the view created in this table)
