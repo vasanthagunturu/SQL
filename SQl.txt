@@ -20,3 +20,8 @@ CHECK - Ensures that all values in a column satisfies a specific condition
 DEFAULT - Sets a default value for a column when no value is specified
 INDEX - Used to create and retrieve data from the database very quickly
 
+DIFFERENT SUBSETS OF SQL:
+DDL- Data Defenition Language- commands to define schema
+DML - Data Manipulation Language- commands to manipulate
+DCL- Data Control language - Authorize/invoke/permissions/rights
+TCL- Transaction Control Language-rollback
